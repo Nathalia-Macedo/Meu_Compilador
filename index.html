@@ -6,104 +6,103 @@
   <title>Compilador de Código</title>
   <style>
     body {
-      background-color: #1e1e1e;
-      color: #d4d4d4;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
     }
-
     .container {
-      background-color: #2d2d2d;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      width: 80%;
-      max-width: 600px;
-    }
-
-    .header {
-      background-color: #333333;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      padding: 10px;
+      width: 90%; /* Ajuste para 90% da largura da tela */
+      max-width: 800px; /* Máximo de 800px de largura */
+      margin: 0 auto;
       text-align: center;
+      padding-top: 50px;
     }
-
-    .header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
     textarea {
-      background-color: #1e1e1e;
-      color: #d4d4d4;
-      border: none;
-      border-radius: 5px;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 14px;
+      width: 100%;
       height: 200px;
       padding: 10px;
-      resize: vertical;
-      width: 100%;
+      margin-top: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      resize: none;
+      font-size: 16px; /* Tamanho de fonte padrão */
     }
-
     button {
       background-color: #4CAF50;
-      border: none;
-      border-radius: 5px;
       color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
       cursor: pointer;
+      width: 100%;
       font-size: 16px;
-      margin-top: 10px;
-      padding: 10px 20px;
     }
-
     button:hover {
-      background-color: #45a049;
+      opacity: 0.8;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #555;
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #aaa;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #111;
+      padding: 10px 0;
+    }
+    footer a {
+      color: #aaa;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      color: #fff;
     }
 
-    #output {
-      background-color: #333333;
-      border-radius: 5px;
-      color: #d4d4d4;
-      margin-top: 10px;
-      padding: 10px;
-      white-space: pre-wrap;
+    /* Estilos adicionais para telas menores */
+    @media (max-width: 600px) {
+      .container {
+        width: 95%; /* Ajuste para 95% da largura da tela em telas menores */
+      }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <h1>Compilador de Código</h1>
-    </div>
-    <textarea id="code" rows="10" spellcheck="false">
-
-    </textarea>
+    <h1>Compilador de Código Javascript</h1>
+    <textarea id="codeInput" placeholder="Digite seu código aqui..."></textarea>
     <button onclick="compileCode()">Compilar</button>
-    <div id="output"></div>
+    <div class="result" id="resultOutput"></div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+  <footer>
+    Desenvolvido por Nathalia Macedo<br>
+    <a href="www.linkedin.com/in/nathalia-de-macedo-martins-4aa693253" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/Nathalia-Macedo" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/nath_dev_/" target="_blank"><i class="fab fa-instagram"></i></a>
+  </footer>
 
   <script>
     function compileCode() {
-      const code = document.getElementById('code').value;
-
+      const code = document.getElementById('codeInput').value;
       try {
-        const compiledCode = Babel.transform(code, { presets: ['es2015', 'react'] }).code;
-        eval(compiledCode);
-        document.getElementById('output').textContent = 'Código compilado com sucesso!';
+        eval(code);
+        document.getElementById('resultOutput').innerHTML = 'Código compilado com sucesso!';
       } catch (error) {
-        document.getElementById('output').textContent = `Erro ao compilar o código: ${error}`;
+        document.getElementById('resultOutput').innerHTML = 'Erro ao compilar o código: ' + error.message;
       }
     }
   </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </body>
 </html>
