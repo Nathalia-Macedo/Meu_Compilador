@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compilador de Código</title>
+  <title>Compilador de Código Javascript</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,16 +11,22 @@
       color: #fff;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Garante que o conteúdo ocupe pelo menos toda a altura da viewport */
     }
     .container {
       width: 90%; /* Ajuste para 90% da largura da tela */
       max-width: 800px; /* Máximo de 800px de largura */
-      margin: 0 auto;
+      margin: auto; /* Centraliza horizontalmente */
       text-align: center;
       padding-top: 50px;
+      flex: 1; /* Ocupa o espaço restante verticalmente */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Centraliza verticalmente o conteúdo */
     }
     textarea {
-      width: 100%;
       height: 200px;
       padding: 10px;
       margin-top: 10px;
@@ -47,14 +53,12 @@
       margin-top: 20px;
       padding: 20px;
       background-color: #555;
+      color: #fff; /* Cor do texto no resultado */
     }
     footer {
       text-align: center;
       margin-top: 20px;
       color: #aaa;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
       background-color: #111;
       padding: 10px 0;
     }
