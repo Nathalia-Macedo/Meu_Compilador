@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compilador de Código</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #2d2d2d;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .header {
+      background-color: #333333;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    textarea {
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 14px;
+      height: 200px;
+      padding: 10px;
+      resize: vertical;
+      width: 100%;
+    }
+
+    button {
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      padding: 10px 20px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #output {
+      background-color: #333333;
+      border-radius: 5px;
+      color: #d4d4d4;
+      margin-top: 10px;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Compilador de Código</h1>
+    </div>
+    <textarea id="code" rows="10" spellcheck="false">
+
+    </textarea>
+    <button onclick="compileCode()">Compilar</button>
+    <div id="output"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+
+  <script>
+    function compileCode() {
+      const code = document.getElementById('code').value;
+
+      try {
+        const compiledCode = Babel.transform(code, { presets: ['es2015', 'react'] }).code;
+        eval(compiledCode);
+        document.getElementById('output').textContent = 'Código compilado com sucesso!';
+      } catch (error) {
+        document.getElementById('output').textContent = `Erro ao compilar o código: ${error}`;
+      }
+    }
+  </script>
+</body>
+</html>
